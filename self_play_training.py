@@ -157,13 +157,13 @@ def parse_args():
     parser.add_argument(
         "--checkpoint-every",
         type=int,
-        default=50,
+        default=500,
         help="Save checkpoint every N games (0 disables periodic checkpoints)",
     )
     parser.add_argument(
         "--final-weights",
         type=Path,
-        default=Path("puct_self_play.weights.h5"),
+        default=Path("AlphaZero---SOS-Game/puct_self_play.weights.h5"),
         help="Where to save final model weights",
     )
     parser.add_argument(
