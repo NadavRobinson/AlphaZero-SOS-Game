@@ -1,0 +1,64 @@
+CUDA_VISIBLE_DEVICES=0
+SLURM_JOB_GPUS=0
+SLURM_STEP_GPUS=
+GPU 0: NVIDIA GeForce RTX 3070 (UUID: GPU-9bc65574-16b3-6b27-5436-35c8e71da2d5)
+TF: 2.15.1
+Built with CUDA: True
+GPUs: [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+[init] loaded weights from AlphaZero---SOS-Game/5000_pretrain.weights.h5
+[train] starting self-play training
+[train] num_games=5000, puct_iterations=500, buffer_size=50000, batch_size=128, train_steps_per_game=4, warmup_samples=1024
+[train] game=10/5000 buffer=250 wins(R/B/D)=(4/6/0) warmup=250/1024
+[train] game=20/5000 buffer=500 wins(R/B/D)=(7/11/2) warmup=500/1024
+[train] game=30/5000 buffer=750 wins(R/B/D)=(8/17/5) warmup=750/1024
+[train] game=40/5000 buffer=1000 wins(R/B/D)=(13/22/5) warmup=1000/1024
+[train] game=50/5000 buffer=1250 wins(R/B/D)=(15/26/9) policy_loss=2.6736 value_loss=0.2064
+[train] game=60/5000 buffer=1500 wins(R/B/D)=(19/30/11) policy_loss=2.4654 value_loss=0.1616
+[train] game=70/5000 buffer=1750 wins(R/B/D)=(24/33/13) policy_loss=2.3274 value_loss=0.1171
+[train] game=80/5000 buffer=2000 wins(R/B/D)=(29/33/18) policy_loss=2.3024 value_loss=0.1340
+[train] game=90/5000 buffer=2250 wins(R/B/D)=(31/35/24) policy_loss=2.2617 value_loss=0.1147
+[train] game=100/5000 buffer=2500 wins(R/B/D)=(35/39/26) policy_loss=2.0743 value_loss=0.1200
+[train] game=110/5000 buffer=2750 wins(R/B/D)=(41/41/28) policy_loss=2.0830 value_loss=0.1451
+[train] game=120/5000 buffer=3000 wins(R/B/D)=(47/44/29) policy_loss=2.0850 value_loss=0.1279
+[train] game=130/5000 buffer=3250 wins(R/B/D)=(51/49/30) policy_loss=2.1060 value_loss=0.1764
+[train] game=140/5000 buffer=3500 wins(R/B/D)=(55/55/30) policy_loss=2.0730 value_loss=0.1701
+[train] game=150/5000 buffer=3750 wins(R/B/D)=(60/58/32) policy_loss=2.0878 value_loss=0.1631
+[train] game=160/5000 buffer=4000 wins(R/B/D)=(66/61/33) policy_loss=2.1377 value_loss=0.1636
+[train] game=170/5000 buffer=4250 wins(R/B/D)=(69/63/38) policy_loss=1.9567 value_loss=0.1508
+[train] game=180/5000 buffer=4500 wins(R/B/D)=(76/64/40) policy_loss=1.9588 value_loss=0.1562
+[train] game=190/5000 buffer=4750 wins(R/B/D)=(80/67/43) policy_loss=1.9944 value_loss=0.1289
+[train] game=200/5000 buffer=5000 wins(R/B/D)=(82/69/49) policy_loss=1.9392 value_loss=0.1333
+[train] game=210/5000 buffer=5250 wins(R/B/D)=(87/72/51) policy_loss=1.9997 value_loss=0.1799
+[train] game=220/5000 buffer=5500 wins(R/B/D)=(88/76/56) policy_loss=1.9554 value_loss=0.1130
+[train] game=230/5000 buffer=5750 wins(R/B/D)=(93/79/58) policy_loss=1.9150 value_loss=0.1497
+[train] game=240/5000 buffer=6000 wins(R/B/D)=(99/81/60) policy_loss=1.9822 value_loss=0.2016
+[train] game=250/5000 buffer=6250 wins(R/B/D)=(104/84/62) policy_loss=1.9262 value_loss=0.1647
+[train] game=260/5000 buffer=6500 wins(R/B/D)=(107/90/63) policy_loss=2.0003 value_loss=0.1791
+[train] game=270/5000 buffer=6750 wins(R/B/D)=(109/93/68) policy_loss=1.9185 value_loss=0.1706
+[train] game=280/5000 buffer=7000 wins(R/B/D)=(112/98/70) policy_loss=1.9169 value_loss=0.1426
+[train] game=290/5000 buffer=7250 wins(R/B/D)=(116/103/71) policy_loss=1.9407 value_loss=0.1615
+[train] game=300/5000 buffer=7500 wins(R/B/D)=(121/106/73) policy_loss=1.8484 value_loss=0.1488
+[train] game=310/5000 buffer=7750 wins(R/B/D)=(124/110/76) policy_loss=2.0004 value_loss=0.1346
+[train] game=320/5000 buffer=8000 wins(R/B/D)=(128/116/76) policy_loss=1.9238 value_loss=0.1567
+[train] game=330/5000 buffer=8250 wins(R/B/D)=(132/120/78) policy_loss=1.8488 value_loss=0.1414
+[train] game=340/5000 buffer=8500 wins(R/B/D)=(135/123/82) policy_loss=1.9126 value_loss=0.1891
+[train] game=350/5000 buffer=8750 wins(R/B/D)=(140/125/85) policy_loss=1.9340 value_loss=0.1299
+[train] game=360/5000 buffer=9000 wins(R/B/D)=(145/127/88) policy_loss=1.9118 value_loss=0.1521
+[train] game=370/5000 buffer=9250 wins(R/B/D)=(149/129/92) policy_loss=1.9622 value_loss=0.1302
+[train] game=380/5000 buffer=9500 wins(R/B/D)=(154/132/94) policy_loss=1.9312 value_loss=0.1503
+[train] game=390/5000 buffer=9750 wins(R/B/D)=(158/135/97) policy_loss=1.8641 value_loss=0.1706
+[train] game=400/5000 buffer=10000 wins(R/B/D)=(162/139/99) policy_loss=1.8715 value_loss=0.1869
+[train] game=410/5000 buffer=10250 wins(R/B/D)=(165/141/104) policy_loss=1.8622 value_loss=0.1673
+[train] game=420/5000 buffer=10500 wins(R/B/D)=(170/143/107) policy_loss=1.9132 value_loss=0.1743
+[train] game=430/5000 buffer=10750 wins(R/B/D)=(176/143/111) policy_loss=1.8542 value_loss=0.1455
+[train] game=440/5000 buffer=11000 wins(R/B/D)=(179/146/115) policy_loss=1.9835 value_loss=0.2145
+[train] game=450/5000 buffer=11250 wins(R/B/D)=(181/152/117) policy_loss=1.9284 value_loss=0.2010
+[train] game=460/5000 buffer=11500 wins(R/B/D)=(184/154/122) policy_loss=1.8428 value_loss=0.1583
+[train] game=470/5000 buffer=11750 wins(R/B/D)=(189/158/123) policy_loss=1.9096 value_loss=0.1767
+[train] game=480/5000 buffer=12000 wins(R/B/D)=(191/163/126) policy_loss=1.9121 value_loss=0.1377
+[train] game=490/5000 buffer=12250 wins(R/B/D)=(196/166/128) policy_loss=1.9962 value_loss=0.1750
+[train] game=500/5000 buffer=12500 wins(R/B/D)=(199/166/135) policy_loss=1.8961 value_loss=0.1471
+[train] saved checkpoint to checkpoints/puct_game_500.weights.h5
+[train] game=510/5000 buffer=12750 wins(R/B/D)=(204/168/138) policy_loss=1.9261 value_loss=0.1924
+[train] game=520/5000 buffer=13000 wins(R/B/D)=(208/171/141) policy_loss=1.8488 value_loss=0.1648
+[train] game=530/5000 buffer=13250 wins(R/B/D)=(210/174/146) policy_loss=1.9039 value_loss=0.1445
