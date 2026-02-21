@@ -53,7 +53,7 @@ def parse_args():
     parser.add_argument(
         "--puct-iterations",
         type=int,
-        default=500,
+        default=100,
         help="PUCT iterations per move.",
     )
     parser.add_argument("--cpuct", type=float, default=1.5, help="PUCT exploration constant.")

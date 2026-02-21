@@ -5,7 +5,7 @@ from typing import Optional
 
 from GameNetwork import GameNetwork
 
-NUM_ITERATIONS = 500  # Number of PUCT iterations per move
+NUM_ITERATIONS = 100  # Number of PUCT iterations per move
 PRETRAIN_WEIGHTS_PATH = "5x5_pretrain.weights.h5"
 ACTION_SIZE = BOARD_SIZE * BOARD_SIZE * 2  # Each cell can have 'S' or 'O'
 
