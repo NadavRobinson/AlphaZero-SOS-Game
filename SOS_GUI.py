@@ -27,6 +27,17 @@ class SOSGUI:
         self.ai_players = {}
         self.game_mode = tk.StringVar(value="Player vs AI")
         self.ai_mode = tk.StringVar(value="MCTS")
+        self.model_var = tk.StringVar()
+        self.available_models = self._get_available_models()
+        if self.available_models:
+            # Prefer 5000_pretrain or any 2nd_training_checkpoints if available
+            default_model = self.available_models[0]
+            for m in self.available_models:
+                if "5000_pretrain" in m:
+                    default_model = m
+                    break
+            self.model_var.set(default_model)
+
         self.ai_iterations = MCTS_ITERATIONS
         self.ai_thinking = False
         self.ai_vs_ai_started = False
@@ -35,18 +46,32 @@ class SOSGUI:
         self._build_ui()
         self._new_game()
 
+    def _get_available_models(self):
+        import glob
+        # Search for .weights.h5 files in root and subdirectories
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        pattern = os.path.join(base_dir, "**", "*.weights.h5")
+        models = glob.glob(pattern, recursive=True)
+        # Convert to relative paths from AlphaZero-SOS-Game for cleaner display
+        rel_models = [os.path.relpath(m, base_dir) for m in models]
+        return sorted(rel_models)
+
     def _build_ui(self):
         # Main container
         main_frame = ttk.Frame(self.root, padding=10)
         main_frame.pack(fill=tk.BOTH, expand=True)
 
         # Top controls
-        control_frame = ttk.Frame(main_frame)
-        control_frame.pack(fill=tk.X, pady=(0, 10))
+        self.control_frame = ttk.Frame(main_frame)
+        self.control_frame.pack(fill=tk.X, pady=(0, 10))
 
-        ttk.Label(control_frame, text="Game Mode:").pack(side=tk.LEFT, padx=(0, 5))
+        # First row of controls
+        self.row1 = ttk.Frame(self.control_frame)
+        self.row1.pack(fill=tk.X, pady=(0, 5))
+
+        ttk.Label(self.row1, text="Game Mode:").pack(side=tk.LEFT, padx=(0, 5))
         game_mode_combo = ttk.Combobox(
-            control_frame,
+            self.row1,
             textvariable=self.game_mode,
             values=["Player vs AI", "AI vs AI"],
             state="readonly",
@@ -55,24 +80,39 @@ class SOSGUI:
         game_mode_combo.pack(side=tk.LEFT, padx=(0, 10))
         game_mode_combo.bind("<<ComboboxSelected>>", lambda e: self._new_game())
 
-        ttk.Label(control_frame, text="AI Mode:").pack(side=tk.LEFT, padx=(0, 5))
+        ttk.Label(self.row1, text="AI Mode:").pack(side=tk.LEFT, padx=(0, 5))
         mode_combo = ttk.Combobox(
-            control_frame,
+            self.row1,
             textvariable=self.ai_mode,
             values=["MCTS", "PUCT"],
             state="readonly",
             width=10
         )
         mode_combo.pack(side=tk.LEFT, padx=(0, 10))
-        mode_combo.bind("<<ComboboxSelected>>", lambda e: self._new_game())
+        mode_combo.bind("<<ComboboxSelected>>", self._on_ai_mode_change)
 
-        self.start_button = ttk.Button(control_frame, text="Start AI vs AI", command=self._start_ai_vs_ai)
+        self.start_button = ttk.Button(self.row1, text="Start AI vs AI", command=self._start_ai_vs_ai)
         self.start_button.pack(side=tk.LEFT, padx=5)
 
-        ttk.Button(control_frame, text="New Game", command=self._new_game).pack(side=tk.LEFT, padx=5)
+        ttk.Button(self.row1, text="New Game", command=self._new_game).pack(side=tk.LEFT, padx=5)
+
+        # Second row of controls (Model selection, hidden for MCTS)
+        self.model_frame = ttk.Frame(self.control_frame)
+        # Will be packed/unpacked in _update_ui_visibility
+        
+        ttk.Label(self.model_frame, text="PUCT Model:").pack(side=tk.LEFT, padx=(0, 5))
+        self.model_combo = ttk.Combobox(
+            self.model_frame,
+            textvariable=self.model_var,
+            values=self.available_models,
+            state="readonly",
+            width=60
+        )
+        self.model_combo.pack(side=tk.LEFT, padx=(0, 10))
+        self.model_combo.bind("<<ComboboxSelected>>", lambda e: self._new_game())
 
         # Status labels
-        self.status_label = ttk.Label(control_frame, text="", font=("Arial", 10, "bold"))
+        self.status_label = ttk.Label(self.row1, text="", font=("Arial", 10, "bold"))
         self.status_label.pack(side=tk.RIGHT, padx=10)
 
         # Score frame
@@ -115,9 +155,25 @@ class SOSGUI:
         self.cancel_button.pack(side=tk.LEFT, padx=10)
 
         self._hide_letter_selection()
+        self._update_ui_visibility()
 
         # Selected cell
         self.selected_cell = None
+
+    def _on_ai_mode_change(self, event=None):
+        self._update_ui_visibility()
+        self._new_game()
+
+    def _update_ui_visibility(self):
+        if self.ai_mode.get() == "PUCT":
+            self.model_frame.pack(fill=tk.X, pady=(0, 5), before=self.row1)
+            # Re-pack row1 after model_frame to keep it below if desired, 
+            # or just pack it before to have model selection on top.
+            # Let's put model selection below row1.
+            self.model_frame.pack_forget()
+            self.model_frame.pack(fill=tk.X, pady=(0, 5), after=self.row1)
+        else:
+            self.model_frame.pack_forget()
 
     def _hide_letter_selection(self):
         for widget in self.letter_frame.winfo_children():
@@ -147,6 +203,7 @@ class SOSGUI:
         self.ai_vs_ai_started = False
         self.selected_cell = None
         self._hide_letter_selection()
+        self._update_ui_visibility()
 
         # Initialize AI player(s)
         game_mode = self.game_mode.get()
@@ -158,12 +215,17 @@ class SOSGUI:
                 self.ai_players = {RED: MCTSPlayer(), BLUE: MCTSPlayer()}
             self.ai_iterations = MCTS_ITERATIONS
         else:  # PUCT
-            if not os.path.exists(PRETRAIN_WEIGHTS_PATH):
+            model_path = self.model_var.get()
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            full_model_path = os.path.join(base_dir, model_path)
+            
+            if not os.path.exists(full_model_path):
                 messagebox.showerror(
                     "Error",
-                    f"PUCT requires pretrained weights at:\n{PRETRAIN_WEIGHTS_PATH}\n\nSwitching to MCTS mode."
+                    f"PUCT requires weights at:\n{full_model_path}\n\nSwitching to MCTS mode."
                 )
                 self.ai_mode.set("MCTS")
+                self._update_ui_visibility()
                 if game_mode == "Player vs AI":
                     self.ai_players = {BLUE: MCTSPlayer()}
                 else:
@@ -172,14 +234,14 @@ class SOSGUI:
             else:
                 if game_mode == "Player vs AI":
                     network = GameNetwork()
-                    network.load(PRETRAIN_WEIGHTS_PATH)
+                    network.load(full_model_path)
                     self.ai_players = {BLUE: PUCTPlayer(network=network)}
                 else:
                     # Mirror PUCT_SOS.mainAIvsAI: separate networks/players for each side.
                     network_red = GameNetwork()
                     network_blue = GameNetwork()
-                    network_red.load(PRETRAIN_WEIGHTS_PATH)
-                    network_blue.load(PRETRAIN_WEIGHTS_PATH)
+                    network_red.load(full_model_path)
+                    network_blue.load(full_model_path)
                     self.ai_players = {
                         RED: PUCTPlayer(network=network_red),
                         BLUE: PUCTPlayer(network=network_blue),
