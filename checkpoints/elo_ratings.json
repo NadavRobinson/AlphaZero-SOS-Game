@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "initial_rating": 1000,
+    "k_after_200_games": 16,
+    "k_before_200_games": 32,
+    "provisional_games": 200,
+    "updated_at": "2026-02-22T05:12:57.324197+00:00"
+  },
+  "models": {
+    "checkpoints/G0_500.weights.h5": {
+      "created_at": "2026-02-21T15:32:08.009669+00:00",
+      "games_played": 500,
+      "rating": 995,
+      "updated_at": "2026-02-22T05:12:57.323729+00:00"
+    },
+    "checkpoints/G5_500.weights.h5": {
+      "created_at": "2026-02-21T15:32:08.009677+00:00",
+      "games_played": 500,
+      "rating": 1005,
+      "updated_at": "2026-02-22T05:12:57.323740+00:00"
+    }
+  }
+}
