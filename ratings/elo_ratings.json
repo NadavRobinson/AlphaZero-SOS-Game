@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "initial_rating": 1000,
+    "k_after_200_games": 64,
+    "k_before_200_games": 64,
+    "provisional_games": 200,
+    "updated_at": "2026-02-22T18:07:22.877874+00:00"
+  },
+  "models": {
+    "AlphaZero---SOS-Game/checkpoints/G0_500.weights.h5": {
+      "created_at": "2026-02-22T15:36:33.293255+00:00",
+      "games_played": 500,
+      "rating": 901,
+      "updated_at": "2026-02-22T18:07:22.876382+00:00"
+    },
+    "AlphaZero---SOS-Game/checkpoints/G5_500.weights.h5": {
+      "created_at": "2026-02-22T15:36:33.293262+00:00",
+      "games_played": 500,
+      "rating": 1099,
+      "updated_at": "2026-02-22T18:07:22.876394+00:00"
+    }
+  }
+}

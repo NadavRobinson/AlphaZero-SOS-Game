@@ -1,0 +1,58 @@
+CUDA_VISIBLE_DEVICES=0
+SLURM_JOB_GPUS=0
+SLURM_STEP_GPUS=
+GPU 0: NVIDIA GeForce RTX 3070 (UUID: GPU-9bc65574-16b3-6b27-5436-35c8e71da2d5)
+[baseline] game=10/500 W/L/D(first)=0/6/4 ratings(first/latest)=897/1103
+[baseline] game=20/500 W/L/D(first)=0/9/11 ratings(first/latest)=956/1044
+[baseline] game=30/500 W/L/D(first)=0/15/15 ratings(first/latest)=903/1097
+[baseline] game=40/500 W/L/D(first)=0/20/20 ratings(first/latest)=903/1097
+[baseline] game=50/500 W/L/D(first)=0/27/23 ratings(first/latest)=847/1153
+[baseline] game=60/500 W/L/D(first)=0/33/27 ratings(first/latest)=871/1129
+[baseline] game=70/500 W/L/D(first)=0/36/34 ratings(first/latest)=914/1086
+[baseline] game=80/500 W/L/D(first)=0/43/37 ratings(first/latest)=877/1123
+[baseline] game=90/500 W/L/D(first)=0/48/42 ratings(first/latest)=885/1115
+[baseline] game=100/500 W/L/D(first)=0/54/46 ratings(first/latest)=887/1113
+[baseline] game=110/500 W/L/D(first)=0/59/51 ratings(first/latest)=898/1102
+[baseline] game=120/500 W/L/D(first)=0/66/54 ratings(first/latest)=867/1133
+[baseline] game=130/500 W/L/D(first)=0/68/62 ratings(first/latest)=939/1061
+[baseline] game=140/500 W/L/D(first)=0/72/68 ratings(first/latest)=928/1072
+[baseline] game=150/500 W/L/D(first)=0/78/72 ratings(first/latest)=896/1104
+[baseline] game=160/500 W/L/D(first)=0/86/74 ratings(first/latest)=836/1164
+[baseline] game=170/500 W/L/D(first)=0/93/77 ratings(first/latest)=834/1166
+[baseline] game=180/500 W/L/D(first)=0/100/80 ratings(first/latest)=854/1146
+[baseline] game=190/500 W/L/D(first)=0/106/84 ratings(first/latest)=872/1128
+[baseline] game=200/500 W/L/D(first)=0/112/88 ratings(first/latest)=874/1126
+[baseline] game=210/500 W/L/D(first)=0/117/93 ratings(first/latest)=898/1102
+[baseline] game=220/500 W/L/D(first)=0/124/96 ratings(first/latest)=854/1146
+[baseline] game=230/500 W/L/D(first)=0/131/99 ratings(first/latest)=853/1147
+[baseline] game=240/500 W/L/D(first)=0/135/105 ratings(first/latest)=911/1089
+[baseline] game=250/500 W/L/D(first)=0/140/110 ratings(first/latest)=891/1109
+[baseline] game=260/500 W/L/D(first)=0/143/117 ratings(first/latest)=935/1065
+[baseline] game=270/500 W/L/D(first)=0/148/122 ratings(first/latest)=910/1090
+[baseline] game=280/500 W/L/D(first)=0/155/125 ratings(first/latest)=866/1134
+[baseline] game=290/500 W/L/D(first)=0/158/132 ratings(first/latest)=924/1076
+[baseline] game=300/500 W/L/D(first)=0/164/136 ratings(first/latest)=878/1122
+[baseline] game=310/500 W/L/D(first)=0/171/139 ratings(first/latest)=861/1139
+[baseline] game=320/500 W/L/D(first)=0/176/144 ratings(first/latest)=898/1102
+[baseline] game=330/500 W/L/D(first)=0/180/150 ratings(first/latest)=929/1071
+[baseline] game=340/500 W/L/D(first)=0/185/155 ratings(first/latest)=904/1096
+[baseline] game=350/500 W/L/D(first)=0/190/160 ratings(first/latest)=917/1083
+[baseline] game=360/500 W/L/D(first)=0/196/164 ratings(first/latest)=909/1091
+[baseline] game=370/500 W/L/D(first)=0/202/168 ratings(first/latest)=899/1101
+[baseline] game=380/500 W/L/D(first)=0/207/173 ratings(first/latest)=904/1096
+[baseline] game=390/500 W/L/D(first)=0/212/178 ratings(first/latest)=894/1106
+[baseline] game=400/500 W/L/D(first)=0/218/182 ratings(first/latest)=879/1121
+[baseline] game=410/500 W/L/D(first)=0/223/187 ratings(first/latest)=903/1097
+[baseline] game=420/500 W/L/D(first)=0/227/193 ratings(first/latest)=903/1097
+[baseline] game=430/500 W/L/D(first)=0/234/196 ratings(first/latest)=872/1128
+[baseline] game=440/500 W/L/D(first)=0/239/201 ratings(first/latest)=893/1107
+[baseline] game=450/500 W/L/D(first)=0/242/208 ratings(first/latest)=938/1062
+[baseline] game=460/500 W/L/D(first)=0/250/210 ratings(first/latest)=854/1146
+[baseline] game=470/500 W/L/D(first)=0/255/215 ratings(first/latest)=892/1108
+[baseline] game=480/500 W/L/D(first)=0/259/221 ratings(first/latest)=933/1067
+[baseline] game=490/500 W/L/D(first)=0/264/226 ratings(first/latest)=923/1077
+[baseline] game=500/500 W/L/D(first)=0/269/231 ratings(first/latest)=901/1099
+[baseline] saved ratings to AlphaZero---SOS-Game/ratings/elo_ratings.json
+[baseline] ranking:
+1. AlphaZero---SOS-Game/checkpoints/G5_500.weights.h5: rating=1099, games=500
+2. AlphaZero---SOS-Game/checkpoints/G0_500.weights.h5: rating=901, games=500
