@@ -1,0 +1,18 @@
+CUDA_VISIBLE_DEVICES=0
+SLURM_JOB_GPUS=0
+SLURM_STEP_GPUS=
+GPU 0: NVIDIA GeForce RTX 3070 (UUID: GPU-9bc65574-16b3-6b27-5436-35c8e71da2d5)
+[baseline] game=10/100 W/L/D(first)=0/3/7 ratings(first/latest)=947/1053
+[baseline] game=20/100 W/L/D(first)=0/10/10 ratings(first/latest)=883/1117
+[baseline] game=30/100 W/L/D(first)=0/17/13 ratings(first/latest)=842/1158
+[baseline] game=40/100 W/L/D(first)=0/22/18 ratings(first/latest)=879/1121
+[baseline] game=50/100 W/L/D(first)=0/27/23 ratings(first/latest)=917/1083
+[baseline] game=60/100 W/L/D(first)=0/32/28 ratings(first/latest)=925/1075
+[baseline] game=70/100 W/L/D(first)=0/35/35 ratings(first/latest)=948/1052
+[baseline] game=80/100 W/L/D(first)=0/39/41 ratings(first/latest)=932/1068
+[baseline] game=90/100 W/L/D(first)=0/45/45 ratings(first/latest)=883/1117
+[baseline] game=100/100 W/L/D(first)=0/52/48 ratings(first/latest)=858/1142
+[baseline] saved ratings to AlphaZero---SOS-Game/ratings/elo_ratings.json
+[baseline] ranking:
+1. AlphaZero---SOS-Game/checkpoints/G5_500.weights.h5: rating=1142, games=100
+2. AlphaZero---SOS-Game/checkpoints/G0_500.weights.h5: rating=858, games=100
